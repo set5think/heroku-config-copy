@@ -1,7 +1,7 @@
 require 'heroku/command/config'
 
 class Heroku::Command::Config
-  # config:copy KEY
+  # config:copy --dst_app APP
   #
   # copies config from one app to another
   #
