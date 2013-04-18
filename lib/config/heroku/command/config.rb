@@ -1,14 +1,15 @@
 require 'heroku/command/config'
 
 class Heroku::Command::Config
-  # config:copy --dst_app APP
+  # config:copy --dst_app APP [KEY1 KEY1]
   #
   # copies config from one app to another
   #
   #Examples:
   #
   # $ heroku config:copy --dst_app APP
-  # one
+  #
+  # $ heroku config:copy --dst_app APP DATABASE_URL #This will just copy DATABASE_URL from --app to --dst_app
   #
 
   def copy

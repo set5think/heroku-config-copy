@@ -12,6 +12,8 @@ This extension aids in the situation where you have multiple environments for yo
 
     $ heroku config:copy --dst_app DST_APP (--app APP is is optional, pending you want to copy the config from the app that the heroku command will currently grab)
 
+    $ heroku config:copy --dst_app DST_APP VAR_NAME ### This will just copy the specified VAR_NAME(s) from --app to --dst_app
+
 ## Todo
 
 Allow keys to be passed so only explicitly listed config variables get copied
