@@ -11,7 +11,7 @@ class Heroku::Command::Maintenance
         unless apps.empty?
           apps.each do |my_app|
             action("Enabling maintenance mode for #{my_app['name']}") do
-              api.post_appi_maintenance(my_app['name'], '1')
+              api.post_api_maintenance(my_app['name'], '1')
             end
           end
         end
@@ -28,7 +28,7 @@ class Heroku::Command::Maintenance
         unless apps.empty?
           apps.each do |my_app|
             action("Disabling maintenance mode for #{my_app['name']}") do
-              api.post_appi_maintenance(my_app['name'], '0')
+              api.post_api_maintenance(my_app['name'], '0')
             end
           end
         end
