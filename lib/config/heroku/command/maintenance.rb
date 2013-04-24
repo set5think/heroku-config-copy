@@ -7,7 +7,7 @@ class Heroku::Command::Maintenance
       super
     else
       if args.include?('ALL')
-        apps - api.get_apps.body
+        apps = api.get_apps.body
         unless apps.empty?
           apps.each do |my_app|
             validate_arguments!
@@ -25,7 +25,7 @@ class Heroku::Command::Maintenance
       super
     else
       if args.include?('ALL')
-        apps - api.get_apps.body
+        apps = api.get_apps.body
         unless apps.empty?
           apps.each do |my_app|
             validate_arguments!
