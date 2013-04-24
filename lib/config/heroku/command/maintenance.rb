@@ -12,7 +12,7 @@ class Heroku::Command::Maintenance
           apps.each do |my_app|
             @app = my_app['name']
             api.get_app(@app)
-            action("Enabling maintenance mode for #{@app]}") do
+            action("Enabling maintenance mode for #{@app}") do
               api.post_api_maintenance(@app, '1')
             end
           end
