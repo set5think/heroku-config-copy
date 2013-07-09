@@ -25,15 +25,22 @@ class Heroku::Command::Db
       :port   => uri.port
     }
 
-    puts "#{uri_parts[:scheme]} not supported yet" if uri_parts[:scheme] != 'postgres'
+    return "#{uri_parts[:scheme]} not supported yet" if uri_parts[:scheme] != 'postgres'
 
     if parse_style.nil? || parse_style == "psql"
-      puts "psql -h #{uri_parts[:host]} -d #{uri_parts[:db]} -U #{uri_parts[:user]}"
+
+      display("psql -h #{uri_parts[:host]} -d #{uri_parts[:db]} -U #{uri_parts[:user]}")
+
     elsif parse_style == 'pgpass'
-      puts "#{uri_parts[:host]}:#{uri_parts[:port]}:#{uri_parts[:db]}:#{uri_parts[:user]}:#{uri_parts[:pw]}"
+
+      display("#{uri_parts[:host]}:#{uri_parts[:port]}:#{uri_parts[:db]}:#{uri_parts[:user]}:#{uri_parts[:pw]}")
+
     else
-      puts "#{parse_style} not known or supported. Please use 'psql' or 'pgpass'"
+
+      display("#{parse_style} not known or supported. Please use 'psql' or 'pgpass'")
+
     end
+
   end
 
   protected
