@@ -30,7 +30,7 @@ class Heroku::Command::Db
     if parse_style.nil? || parse_style == "psql"
       puts "psql -h #{uri_parts[:host]} -d #{uri_parts[:db]} -U #{uri_parts[:user]}"
     elsif parse_style == 'pgpass'
-      puts "#{uri_parts[:host]}:#{uri_parts[:port]}:#{uri_parts[:db]}:#{uri_parts[:user]}:#{uri_parts['pw']}"
+      puts "#{uri_parts[:host]}:#{uri_parts[:port]}:#{uri_parts[:db]}:#{uri_parts[:user]}:#{uri_parts[:pw]}"
     else
       puts "#{parse_style} not known or supported. Please use 'psql' or 'pgpass'"
     end
