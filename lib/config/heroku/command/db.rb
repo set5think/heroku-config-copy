@@ -7,7 +7,7 @@ class Heroku::Command::Db
     db = args.detect { |a| a.include?('HEROKU_POSTGRESQL_') } || 'DATABASE_URL'
 
     format = args.detect do |a|
-      if a.include?("--format")
+      if a.include?("format")
         a.split(/=?|\s?/)[1]
       end
     end
