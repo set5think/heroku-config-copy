@@ -8,7 +8,7 @@ class Heroku::Command::Db
 
     format = args.detect { |a| a.include?("--format") }
 
-    format = format.split(/=?|\s?/)[1]
+    format = format.split(/=|\s/)[1]
 
     puts "format is #{format}"
 
