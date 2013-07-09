@@ -8,10 +8,4 @@ class Heroku::Command::Base
     end
   end
 
-  def parse_style
-    @parse_style ||= if options[:parse_style].is_a?(String)
-      options[:parse_style]
-    end
-  end
-
 end

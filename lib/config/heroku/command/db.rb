@@ -6,6 +6,8 @@ class Heroku::Command::Db
 
     db = args.detect { |a| a.include?('HEROKU_POSTGRESQL_') } || 'DATABASE_URL'
 
+    format = extract_option("--format")
+
     db_info = {}
 
     heroku.config_vars(app).select do |k, v|
@@ -27,17 +29,17 @@ class Heroku::Command::Db
 
     return "#{uri_parts[:scheme]} not supported yet" if uri_parts[:scheme] != 'postgres'
 
-    if parse_style.nil? || parse_style == "psql"
+    if format.nil? || format == "psql"
 
       display("psql -h #{uri_parts[:host]} -d #{uri_parts[:db]} -U #{uri_parts[:user]}")
 
-    elsif parse_style == 'pgpass'
+    elsif format == 'pgpass'
 
       display("#{uri_parts[:host]}:#{uri_parts[:port]}:#{uri_parts[:db]}:#{uri_parts[:user]}:#{uri_parts[:pw]}")
 
     else
 
-      display("#{parse_style} not known or supported. Please use 'psql' or 'pgpass'")
+      display("#{format} not known or supported. Please use 'psql' or 'pgpass'")
 
     end
 
