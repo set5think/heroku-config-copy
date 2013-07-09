@@ -8,7 +8,7 @@ class Heroku::Command::Db
 
     format = args.detect do |a|
       if a.include?("--format")
-        a.split(/=|\s/)[1]
+        a.split(/=?|\s?/)[1]
       end
     end
 
