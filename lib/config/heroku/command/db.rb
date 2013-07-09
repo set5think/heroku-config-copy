@@ -3,9 +3,16 @@ require 'heroku/command/db'
 class Heroku::Command::Db
 
   def parse_db_url
-    require 'uri'
-    db_url = heroku.config_vars(app).select { |k, v| args.include?(k) }
+
+    db = args.detect { |a| a.include?(/HEROKU_POSTGRESQL_/) }
+
+    return "" if db.nil?
+
+    db_url = heroku.config_vars(app).select { |k, v| db.include?(k) }
+
     puts db_url
+
+    #
     # uri = URI.parse(opts[:database_url])
     # uri_parts = {
     #   :host   => uri.host,
