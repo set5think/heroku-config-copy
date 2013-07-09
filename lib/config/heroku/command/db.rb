@@ -8,7 +8,7 @@ class Heroku::Command::Db
 
     format = args.detect { |a| a.include?("--format") }
 
-    format = format.split(/=/)[1]
+    format = format.split(/=/)[1] rescue nil
 
     db_info = {}
 
