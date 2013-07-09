@@ -4,7 +4,8 @@ class Heroku::Command::Db
 
   def parse_db_url
     require 'uri'
-    puts heroku.config_vars(app)
+    db_url = heroku.config_vars(app).select { |k, v| args.include?(k) }
+    puts db_url
     # uri = URI.parse(opts[:database_url])
     # uri_parts = {
     #   :host   => uri.host,
