@@ -55,7 +55,7 @@ class Heroku::Command::Config
       return "#{uri_parts['host']}:#{uri_parts['port']}:#{uri_parts['db']}:#{uri_parts['user']}:#{uri_parts['pw']}"
     else
       return "#{parse_style} not known or supported. Please use 'psql' or 'pgpass'"
-    end if
+    end
   end
 
   protected
