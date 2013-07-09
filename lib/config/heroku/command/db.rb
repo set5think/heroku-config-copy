@@ -6,11 +6,9 @@ class Heroku::Command::Db
 
     db = args.detect { |a| a.include?('HEROKU_POSTGRESQL_') }
 
-    puts db
-
     return "" if db.nil?
 
-    db_url = heroku.config_vars(app).select { |k, v| db.include?(k) }
+    db_url = heroku.config_vars(app).select { |k, v| k.include?(db) }
 
     puts db_url
 
