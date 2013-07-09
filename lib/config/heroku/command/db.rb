@@ -6,8 +6,8 @@ class Heroku::Command::Db
 
     db = args.detect { |a| a.include?('HEROKU_POSTGRESQL_') } || 'DATABASE_URL'
 
-    format = extract_option("--something")
-    puts "format is #{format}"
+    formata = extract_option("--something")
+    puts "formata is #{formata}"
 
     db_info = {}
 
