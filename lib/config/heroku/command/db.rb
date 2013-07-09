@@ -4,9 +4,7 @@ class Heroku::Command::Db
 
   def parse_db_url
 
-    db = args.detect { |a| a.include?('HEROKU_POSTGRESQL_') }
-
-    return "" if db.nil?
+    db = args.detect { |a| a.include?('HEROKU_POSTGRESQL_') } || 'DATABASE_URL'
 
     db_url = heroku.config_vars(app).select { |k, v| k.include?(db) }
 
